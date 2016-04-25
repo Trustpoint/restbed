@@ -40,12 +40,12 @@ int main( const int, const char** )
 #ifndef ECDHE_SUPPORT
     ssl_settings->set_temporary_diffie_hellman( Uri( "file:///tmp/dh768.pem" ) );
 #else
-    ssl_settings->set_temporary_ecc_diffie_hellman(true);
+    ssl_settings->set_temporary_ecc_diffie_hellman( true );
 #endif
-    
+
     auto settings = make_shared< Settings >( );
     settings->set_ssl_settings( ssl_settings );
-    
+
     Service service;
     service.publish( resource );
     service.start( settings );
